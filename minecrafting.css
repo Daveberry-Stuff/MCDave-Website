@@ -1,47 +1,145 @@
+p, b, i, a, h1, h2, li, details, summary {
+    text-shadow: 0px 0px 10px black;
+    color: white;
+    text-align: center;
+    font-family: minecraft;
+}
+
+details {
+    width: 600px;
+
+    interpolate-size: allow-keywords;
+    &::details-content {
+        transition:
+            block-size 1s,
+            content-visibility 1s allow-discrete;
+        overflow: hidden;
+        block-size: 0;
+    }
+
+    &[open]::details-content {
+        block-size: auto;
+    }
+}
+
+li {
+    text-align: left;
+}
+
 a {
     color: aqua;
+    text-decoration: none;
 }
+
+img, video {
+    border-radius: 10px;
+}
+
+
+
+
+
+
 
 
 
 /* Background */
-body, html {
+body {
     background-color: black;
-    height: 100%;
-    margin: 0;
 }
 
-.background {
-    background-image: url("Images/Backgrounds/uwenSMP.png");
+.uwenSMP-background, .DaveSMP-background{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    overflow-x: hidden;
+    position: relative;
+}
+
+.uwenSMP-background::before {
+    background-image: url('Images/Backgrounds/uwenSMP.png');
+    content: "";
     
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
     filter: blur(8px);
     -webkit-filter: blur(8px);
-    
-    height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
-.text {
+.DaveSMP-background::before {
+    background-image: url('Images/Backgrounds/uwenSMP.png');
+    content: "";
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+.box, .hover-box, .spacer {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     padding: 10px;
 
-    text-shadow: 0px 0px 10px black;
-    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
 
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.spacer {
+    height: 1px;
+}
+
+.hover-box:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* Other */
+@font-face {
+    font-family: minecraft;
+    src: url(Other/Font/MinecraftRegular-Bmg3.otf);
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex > a, .flex > div {
+    margin: 5px;
+}
+
+.xy-center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    
-    font-weight: bold;
-    font-family: minecraft;
 }
 
-@font-face {
-    font-family: minecraft;
-    src: url(Other/Font/MinecraftRegular-Bmg3.otf);
+.x-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: auto;
 }
